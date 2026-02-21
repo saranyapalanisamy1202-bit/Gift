@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Panda 🎂</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Name Modal -->
+    <div id="name-modal" class="modal-overlay active">
+        <div class="modal-content name-modal-content">
+            <h2>What's your name?</h2>
+            <input type="text" id="user-name-input" placeholder="Enter your name..." maxlength="30">
+            <button class="glow-btn" id="btn-submit-name">Let's Go!</button>
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-hearts">
+                <span class="heart">❤</span>
+                <span class="heart">💕</span>
+                <span class="heart">🎂</span>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Preparing your surprise...</p>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div id="progress-bar" class="progress-bar">
+        <div class="progress-fill"></div>
+    </div>
+
+    <!-- Main Container -->
+    <main id="main-container">
+        
+        <!-- Page 1: Welcome -->
+        <section id="page-welcome" class="page active">
+            <div class="particles-bg" id="particles-welcome"></div>
+            <div class="page-content welcome-content">
+                <h1 class="welcome-line1" id="typed-line1"></h1>
+                <h2 class="welcome-line2" id="typed-line2"></h2>
+                <p class="welcome-name" id="welcome-name-display"></p>
+                <button class="glow-btn" id="btn-start">Start Your Surprise</button>
+            </div>
+            <div class="floating-hearts"></div>
+        </section>
+
+        <!-- Page 2: Password -->
+        <section id="page-password" class="page">
+            <div class="gradient-bg"></div>
+            <div class="page-content password-content">
+                <div class="gift-box" id="gift-box">
+                    <div class="gift-box-top"></div>
+                    <div class="gift-box-body">
+                        <div class="ribbon-v"></div>
+                        <div class="ribbon-h"></div>
+                    </div>
+                    <div class="gift-box-bottom"></div>
+                </div>
+                <p class="password-hint">Click the gift box to enter password</p>
+                <div class="password-modal" id="password-modal">
+                    <div class="modal-content">
+                        <input type="password" id="password-input" placeholder="Enter the secret password...">
+                        <p class="password-error" id="password-error"></p>
+                        <button class="glow-btn" id="btn-submit-password">Unlock</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--
+          QUIZ CUSTOMIZATION: Change questions and options below.
+          For each option, set data-correct="true" on the RIGHT answer, data-correct="false" on wrong ones.
+        -->
+        <!-- Page 3: Quiz 1 -->
+        <section id="page-quiz1" class="page">
+            <div class="gradient-bg"></div>
+            <div class="page-content quiz-content">
+                <h2>Quiz Time! 💕</h2>
+                <p class="quiz-question" data-quiz="q1">What is saro's favourite colour</p>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-correct="false">lavender</button>
+                    <button class="quiz-btn" data-correct="true">pink</button>
+                    <button class="quiz-btn" data-correct="false">blue</button>
+                    <button class="quiz-btn" data-correct="false">red</button>
+                </div>
+                <p class="quiz-feedback" id="quiz1-feedback"></p>
+            </div>
+        </section>
+
+        <!-- Page 4: Quiz 2 -->
+        <section id="page-quiz2" class="page">
+            <div class="gradient-bg"></div>
+            <div class="page-content quiz-content">
+                <h2>Quiz Time! 💕</h2>
+                <p class="quiz-question" data-quiz="q2">When did we have a beautiful dayout together?</p>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-correct="false">Feb 8</button>
+                    <button class="quiz-btn" data-correct="false">Feb 7</button>
+                    <button class="quiz-btn" data-correct="true">Feb 6</button>
+                    <button class="quiz-btn" data-correct="false">Feb 5</button>
+                </div>
+                <p class="quiz-feedback" id="quiz2-feedback"></p>
+            </div>
+        </section>
+
+        <!-- Page 5: Quiz 3 -->
+        <section id="page-quiz3" class="page">
+            <div class="gradient-bg"></div>
+            <div class="page-content quiz-content">
+                <h2>Quiz Time! 💕</h2>
+                <p class="quiz-question" data-quiz="q3">What nickname do you call me?</p>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-correct="false">sara</button>
+                    <button class="quiz-btn" data-correct="true">saro</button>
+                    <button class="quiz-btn" data-correct="false">bro</button>
+                    <button class="quiz-btn" data-correct="false">Friend</button>
+                </div>
+                <p class="quiz-feedback" id="quiz3-feedback"></p>
+            </div>
+        </section>
+
+        <!-- Page 6: Fake Chat -->
+        <section id="page-chat" class="page">
+            <div class="gradient-bg"></div>
+            <div class="page-content chat-content">
+                <h2>Our Chat 💬</h2>
+                <div class="chat-container">
+                    <div class="chat-messages" id="chat-messages"></div>
+                    <div class="typing-indicator" id="typing-indicator">
+                        <span></span><span></span><span></span>
+                    </div>
+                </div>
+                <button class="glow-btn chat-next-btn" id="btn-chat-next" style="display:none">Next Surprise</button>
+            </div>
+        </section>
+
+        <!-- Page 8: Timeline -->
+        <section id="page-timeline" class="page">
+            <div class="gradient-bg particles-page"></div>
+            <div class="page-content timeline-content">
+                <h2>Our Journey 💕</h2>
+                <div class="timeline">
+                    <div class="timeline-item"><span class="timeline-year">Sep 4</span><p>Our first bike ride</p></div>
+                    <div class="timeline-item"><span class="timeline-year">Oct 4</span><p>you made me feel so special</p></div>
+                    <div class="timeline-item"><span class="timeline-year">Feb 6</span><p>Our first day out</p></div>
+    
+                </div>
+                <button class="glow-btn" id="btn-timeline-continue">Continue</button>
+            </div>
+        </section>
+
+        <!-- Page 9: Catch Hearts Game -->
+        <section id="page-game" class="page">
+            <div class="gradient-bg"></div>
+            <div class="page-content game-content">
+                <h2>Catch the Hearts! ❤️</h2>
+                <p class="game-instruction">Click the hearts to score 10 points</p>
+                <div class="game-score">Score: <span id="game-score">0</span>/10</div>
+                <div class="game-area" id="game-area"></div>
+                <div class="game-won" id="game-won" style="display:none">
+                    <p>You won! Unlocking next surprise...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 10: Secret Letter -->
+        <section id="page-letter" class="page">
+            <div class="gradient-bg"></div>
+            <div class="page-content letter-content">
+                <h2>A Letter For You</h2>
+                <div class="envelope" id="envelope">
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-body"></div>
+                </div>
+                <div class="letter-container" id="letter-container">
+                    <div class="letter paper-texture">
+                        <p class="letter-text" id="letter-text"></p>
+                    </div>
+                </div>
+                <button class="glow-btn" id="btn-letter-continue" style="display:none">Continue</button>
+            </div>
+        </section>
+
+        <!-- Page 11: Balloon Pop -->
+        <section id="page-balloons" class="page">
+            <div class="gradient-bg"></div>
+            <div class="page-content balloons-content">
+                <h2>Pop the Balloons! 🎈</h2>
+                <div class="balloons-grid" id="balloons-grid"></div>
+                <div class="balloon-reveal" id="balloon-reveal"></div>
+            </div>
+        </section>
+
+        <!-- Page 12: Scratch Card -->
+        <section id="page-scratch" class="page">
+            <div class="gradient-bg"></div>
+            <div class="page-content scratch-content">
+                <h2>Scratch to Reveal ✨</h2>
+                <div class="scratch-container">
+                    <div class="scratch-message" id="scratch-message">You unlocked a secret message ❤️</div>
+                    <canvas id="scratch-canvas"></canvas>
+                </div>
+                <button class="glow-btn" id="btn-scratch-continue" style="display:none">Continue</button>
+            </div>
+        </section>
+
+        <!-- Page 13: Story -->
+        <section id="page-story" class="page">
+            <div class="gradient-bg"></div>
+            <div class="page-content story-content">
+                <h2>Our Story</h2>
+                <div class="story-messages">
+                    <p class="story-msg active">Thank you for coming into my life 💕</p>
+                    <p class="story-msg">You make every day brighter</p>
+                    <p class="story-msg">Your means the world to me</p>
+                    <p class="story-msg">Here's to many more amazing memories together</p>
+                    <p class="story-msg" id="story-msg-last">I'm so grateful for you! ✨</p>
+                </div>
+                <button class="glow-btn" id="btn-next-story">Continue</button>
+            </div>
+        </section>
+
+        <!-- Page 14: It's Important -->
+        <section id="page-important" class="page">
+            <div class="gradient-bg"></div>
+            <div class="important-hearts"></div>
+            <div class="page-content important-content">
+                <h1 class="important-title">It's Important ❤️</h1>
+                <p class="important-subtitle" id="important-subtitle"></p>
+                <div class="important-question-area" id="important-question-area">
+                    <p class="important-question">Do you like Saro? ❤️</p>
+                    <div class="important-buttons">
+                        <button class="important-btn yes-btn" id="btn-important-yes">Yes 😍</button>
+                        <button class="important-btn no-btn" id="btn-important-no">No 😒</button>
+                    </div>
+                </div>
+                <div class="important-no-response" id="important-no-response">
+                    <div class="angry-cat">😾</div>
+                    <p class="angry-text">How dare you click NO?!</p>
+                    <p class="angry-subtext">Go back and click the correct answer. 😤</p>
+                    <button class="glow-btn try-again-btn" id="btn-try-again">Try Again</button>
+                </div>
+                <div class="important-yes-response" id="important-yes-response">
+                    <p class="good-boy-text" id="good-boy-text"></p>
+                    <p class="open-gift-text" id="open-gift-text"></p>
+                    <button class="glow-btn open-gift-btn" id="btn-open-gift">Open Gift</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Page 15: Romantic Reveal -->
+        <section id="page-reveal" class="page">
+            <div class="gradient-bg reveal-bg"></div>
+            <div class="reveal-hearts"></div>
+            <div class="page-content reveal-content">
+                <p class="reveal-me" id="reveal-me"></p>
+                <div class="reveal-heart-visual">💖</div>
+                <p class="reveal-message">I am your gift 🎁</p>
+                <button class="glow-btn" id="btn-reveal-continue">Continue to Surprise</button>
+            </div>
+        </section>
+
+        <!-- Page 16: Final Surprise -->
+        <section id="page-final" class="page">
+            <div class="cinematic-overlay" id="cinematic-overlay"></div>
+            <div class="gradient-bg final-bg"></div>
+            <div class="page-content final-content">
+                <div class="final-gift-container" id="final-gift-container">
+                    <div class="final-gift-box" id="final-gift-box">
+                        <div class="final-gift-lid"></div>
+                        <div class="final-gift-base"></div>
+                    </div>
+                    <div class="final-surprise" id="final-surprise">
+                        <h1 class="birthday-text">HAPPY BIRTHDAY</h1>
+                        <h2 class="friend-name" id="friend-name-final">Panda!</h2>
+                        <p class="final-message" id="final-message"></p>
+                    </div>
+                </div>
+                <div class="fireworks-container" id="fireworks"></div>
+                <div class="balloons-container"></div>
+                <button class="glow-btn one-last-thing-btn" id="btn-one-last-thing">One Last Thing...</button>
+                <button class="restart-btn" id="btn-restart">Start Over</button>
+            </div>
+        </section>
+
+        <!-- Page 17: Secret Ending -->
+        <section id="page-ending" class="page">
+            <div class="gradient-bg"></div>
+            <div class="page-content ending-content">
+                <p class="ending-message">I am lucky to have you in my life ❤️</p>
+                <div class="infinite-hearts" id="infinite-hearts"></div>
+                <button class="restart-btn" id="btn-restart-ending">Start Over</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Hidden Audio Elements -->
+    <audio id="click-sound">
+        <source src="assets/sounds/click.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="gift-sound">
+        <source src="assets/sounds/gift-open.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="scratch-sound">
+        <source src="assets/sounds/scratch.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="error-sound">
+        <source src="assets/sounds/error.mp3" type="audio/mpeg">
+    </audio>
+    <!-- CDN Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="script.js"></script>
+    <script src="script-advanced.js"></script>
+</body>
+</html>
